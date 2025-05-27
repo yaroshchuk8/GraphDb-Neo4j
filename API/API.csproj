@@ -8,6 +8,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
+        <PackageReference Include="Neo4j.Driver" Version="5.28.1" />
     </ItemGroup>
 
 </Project>
