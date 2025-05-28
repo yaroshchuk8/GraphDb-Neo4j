@@ -15,6 +15,14 @@ builder.Services.AddSingleton(GraphDatabase.Driver(
     )
 ));
 
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("DefaultPolicy", policy =>
+    {
+        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:5173");
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,6 +30,8 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseCors("DefaultPolicy");
 
 app.UseHttpsRedirection();
 
